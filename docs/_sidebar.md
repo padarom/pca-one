@@ -1,6 +1,3 @@
-- Introduction
-  - [Inspiration](inspiration.md)
-
 - Documentation
   - [Instruction Set](instruction_set.md)
   - [Microcode](microcode.md)
