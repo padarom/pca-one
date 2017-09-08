@@ -21,7 +21,6 @@ All operations are preceded by the following two steps to fetch the next instruc
 1. `R(Rs1)e R(Rd)s`
 
 ## 16. `LDIDR` (6 steps)
-*The paper by Sagar Bhavsar et.al. specifies this instruction as loading a nibble from RAM. Instead, we're loading a whole word.*
 1. `R(Rs1)e TMPe`
 2. `IRie OPadd ACCs`
 3. `ACCe Ms`
