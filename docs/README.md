@@ -6,7 +6,6 @@ PCA One is short for **Padarom Computer Architecture _Type 1_**.
 - 16 bit word length
 - up to 64K words RAM _(implementation provides 32K words)_
 - single 16 bit bus _(for address + data)_
-- Big endian
 - Registers _(all registers are 16 bit unless otherwise specified)_:
   - 8 general purpose registers _(register 7 is connected to a 7-segment output)_
   - accumulator
