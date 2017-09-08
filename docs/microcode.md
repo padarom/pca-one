@@ -13,6 +13,11 @@
 2. `R(Rs2)e OPadd ACCs`
 3. `ACCe R(Rd)s`
 
+## 3/4. `SUB`/`SBB` (5 steps)
+1. `R(Rs1)e TMPe`
+2. `R(Rs2)e OPadd ACCs`
+3. `ACCe R(Rd)s`
+
 ## 13. `MOV` (3 steps)
 1. `R(Rs1)e R(Rd)s`
 
