@@ -3,6 +3,7 @@
 PCA One is short for **Padarom Computer Architecture _Type 1_**.
 
 ### Specification
+- RISC ISA
 - 16 bit word length
 - up to 64K words RAM _(implementation provides 32K words)_
 - single 16 bit bus _(for address + data)_
