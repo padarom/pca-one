@@ -7,3 +7,5 @@
 
 - Implementation Details
   - [Parts List](parts_list.md)
+  - Schematics
+    - [Clock](schematics/clock.md)
