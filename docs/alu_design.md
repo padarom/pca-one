@@ -1,25 +1,16 @@
 # ALU Design
-The instruction set requires the ALU to perform certain operations directly:
+
+## ALU Opcode
+To instruct the ALU which of the operations to perform the instruction decoder connects to the ALU via 3 bits. In addition, the last two bits of the instruction are connected to the adder of the ALU as those determine if carry should be used and if B needs to be inverted (for subtraction).
 
 ### Arithmetic
-- Addition
-- Subtraction (using Twos-Complement)
+- `000`: Addition
+- `000`: Subtraction (A-B = A+(-B); -B = &not;B+1)
 
 ### Logic
-- Bitwise AND
-- Bitwise OR
-- Bitwise XOR
-- Bitwise NOT
-- Shift Left (single place)
-- Shift Right (single place)
-
-### Flags
-- `alarger`: A larger B
-- `equal`: A equals B
-- `carry`: Carry Out from adder or shifter
-
-Jump instructions require flags to be set properly:
-- `JGEO`: `alarger OR equal`
-- `JLEO`: `NOT alarger OR equal`
-- `JCO`: `carry`
-- `JEO`: `equal`
+- `001`: Bitwise AND
+- `010`: Bitwise OR
+- `011`: Bitwise XOR
+- `100`: Bitwise NOT
+- `101`: Shift Left (single place)
+- `110`: Shift Right (single place)
