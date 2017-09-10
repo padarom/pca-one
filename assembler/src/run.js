@@ -26,8 +26,14 @@ async.map(program.args, fs.readFile, function (err, content) {
         process.exit(1);
     }
 
-    for (var code of content) {
+    for (var [index, code] of content.entries()) {
         let assembler = new Assembler(decoder.write(code));
-        assembler.run();
+        let result = assembler.run();
+
+        let destination = program.args[index] + '.o';
+        fs.writeFile(destination, result, err => {
+            if (err) throw err;
+            console.log(chalk.green('Object file written to ' + destination));
+        });
     }
 });
