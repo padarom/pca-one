@@ -14,4 +14,4 @@ It uses 3 555 timer ICs:
 ---
 
 _(Click for full size)_
-[![schematics](../_images/clock_module.png)](https://github.com/padarom/pca-one/master/docs/_images/clock_module.png ":target=_blank")
+[![schematics](../_images/clock_module.png)](https://raw.githubusercontent.com/padarom/pca-one/master/docs/_images/clock_module.png ":target=_blank")

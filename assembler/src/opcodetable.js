@@ -1,4 +1,4 @@
-{
+export default {
     "add":   { "opcode": 1,  "format": "R", "mode": 0 },
     "adc":   { "opcode": 1,  "format": "R", "mode": 1 },
     "sub":   { "opcode": 1,  "format": "R", "mode": 2 },
