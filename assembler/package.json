@@ -1,6 +1,6 @@
 {
   "name": "pcaas",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A basic assembler written for PCA One",
   "main": "lib/index.js",
   "bin": {
@@ -8,7 +8,7 @@
   },
   "scripts": {
     "transpile": "babel --source-maps -d lib/ src/",
-    "prepare": "npm run compile"
+    "prepare": "npm run transpile"
   },
   "repository": {
     "type": "git",

@@ -49,6 +49,7 @@ export default class Assembler {
             console.log(output);
         }
 
+        // Buffer is not yet correct.
         return Buffer.from(result);
     }
 

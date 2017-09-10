@@ -30,10 +30,12 @@ async.map(program.args, fs.readFile, function (err, content) {
         let assembler = new Assembler(decoder.write(code));
         let result = assembler.run();
 
+        /*
         let destination = program.args[index] + '.o';
         fs.writeFile(destination, result, err => {
             if (err) throw err;
             console.log(chalk.green('Object file written to ' + destination));
         });
+        */
     }
 });
