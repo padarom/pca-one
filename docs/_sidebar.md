@@ -9,7 +9,6 @@
   - [Assembler](assembler.md)
 
 - Implementation Details
-  - [Parts List](parts_list.md)
   - Schematics
     - [Clock](schematics/clock.md)
     - [General Purpose Register](schematics/register.md)

@@ -10,3 +10,8 @@ Since there can always only be one register being written to, these control sign
 
 _(Click for full size)_
 [![schematics](../_images/register_module.png)](https://raw.githubusercontent.com/padarom/pca-one/master/docs/_images/register_module.png ":target=_blank")
+
+## Parts
+- 2x **74LS245** [<i class="fa fa-book"></i>](http://cdn-reichelt.de/documents/datenblatt/A240/SN74LS245-Don%23ON.pdf)
+- 2x **74LS273** [<i class="fa fa-book"></i>](http://cdn-reichelt.de/documents/datenblatt/A200/LS273_REN.pdf)
+- 2x **74LS00** [<i class="fa fa-book"></i>](http://cdn-reichelt.de/documents/datenblatt/A200/LS00_REN.pdf)
