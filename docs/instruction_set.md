@@ -2,7 +2,7 @@
 
 The instruction set used by PCA One is inspired by the MIPS-16 instruction set described in the paper *[A 16-bit MIPS Based Instruction Set Architecture for RISC Processor](http://www.ijsrp.org/research-paper-0413/ijsrp-p16126.pdf)* (Bhavsar et al. 2013).
 
-| Mnemonic | Op&#8209;Code&nbsp;(Function) | Type&nbsp;&amp;&nbsp;Usage | Description |
+| Mnemonic | Op&#8209;Code&nbsp;(Mode) | Type&nbsp;&amp;&nbsp;Usage | Description |
 |---|---|---|---|
 | ADD | `00001` (`00`) | **R**:&nbsp;ADD&nbsp;R<sub>[s]</sub>&nbsp;R<sub>[t]</sub> | Adds R<sub>[s]</sub> and R<sub>[t]</sub> and stores the sum in R<sub>[s]</sub> ignoring carry. |
 | ADC | `00001` (`01`) | **R**:&nbsp;ADC&nbsp;R<sub>[s]</sub>&nbsp;R<sub>[t]</sub> | Adds R<sub>[s]</sub> and R<sub>[t]</sub> and stores the sum in R<sub>[s]</sub> with previous carry. |
@@ -25,10 +25,11 @@ The instruction set used by PCA One is inspired by the MIPS-16 instruction set d
 | STIDX | `10011` | **R**:&nbsp;STIDX&nbsp;R<sub>[s]</sub>&nbsp;R<sub>[t]</sub>&nbsp; | Stores R<sub>[t]</sub> at address given by [R<sub>[6]</sub> + R<sub>[s]</sub>] |
 | JMP | `10100` | **J**:&nbsp;JMP #11 | Unconditional jump to address offset by 11 bit signed value added to current PC |
 | JMPI | `10101` | **I**:&nbsp;JMPI&nbsp;R<sub>[s]</sub>&nbsp;#8 | Unconditional jump to address offset by 8 bit signed value added to R<sub>[s]</sub> |
-| JGEO* | `10110` | **I**:&nbsp;JGEO&nbsp;R<sub>[s]</sub>&nbsp;R<sub>[t]</sub>&nbsp;#5 | Conditional Jump to [PC + 5 bit signed offset] if R<sub>[s]</sub> is greater than or equal to R<sub>[t]</sub> |
-| JLEO* | `10111` | **I**:&nbsp;JLEO&nbsp;R<sub>[s]</sub>&nbsp;R<sub>[t]</sub>&nbsp;#5 | Conditional Jump to [PC + 5 bit signed offset] if R<sub>[s]</sub> is less than or equal to R<sub>[t]</sub> |
-| JCO* | `11000` | **I**:&nbsp;JCO #5 | Conditional Jump to [PC + 5 bit signed offset] if carry is set |
-| JEO* | `11001` | **I**:&nbsp;JEO&nbsp;R<sub>[s]</sub>&nbsp;R<sub>[t]</sub>&nbsp;#5 | Conditional Jump to [PC + 5 bit signed offset] if R<sub>[s]</sub> equals R<sub>[t]</sub> |
+| CMP | `10110` | **R**:&nbsp;CMP&nbsp;R<sub>[s]</sub>&nbsp;R<sub>[t]</sub> | Compares R<sub>[s]</sub> and R<sub>[t]</sub> and updated the status register
+| JA* | `10111` (`010`) | **I**:&nbsp;JGEO&nbsp;#8 | Conditional Jump to [PC + 8 bit signed offset] if sign offset is not set |
+| JAE | `11000` (`110`) | **I**:&nbsp; | |
+| JB | `11000` (`110`) | **I**:&nbsp; | |
+| JAE | `11000` (`110`) | **I**:&nbsp; | |
 | PUSH | `11010` | **R**:&nbsp;PUSH&nbsp;R<sub>[s]</sub> | Push R<sub>[s]</sub> to the stack top and update stack top |
 | POP | `11011` | **R**:&nbsp;POP&nbsp;R<sub>[s]</sub> | Pop from the stack top and store the value to R<sub>[s]</sub> and update stack top |
 | CALL | `01101` | **R**:&nbsp;CALL&nbsp;R<sub>[s]</sub> | Calls a subroutine located at [R<sub>[s]</sub>]. Return address is pushed onto stack |
@@ -39,8 +40,12 @@ The instruction set used by PCA One is inspired by the MIPS-16 instruction set d
 | NOP | `11111` | **R**:&nbsp;NOP | No operation. Idle machine cycle should be executed |
 | HLT | `00000` | **R**:&nbsp;HLT | Halts the processor |
 | RST | `11110` | **R**:&nbsp;RST | Resets the processor |
-| IE | `?????` | **R**:&nbsp;IE | Enables the interrupt |
-| ID | `?????` | **R**:&nbsp;ID | Disables the interrupt |
+| OUTA | `?????` (`00000`) | **R**:&nbsp;OUTA&nbsp;R<sub>[s]</sub> | Outputs R<sub>[s]</sub> and sets I/O to output address mode |
+| OUTD | `?????` (`00001`) | **R**:&nbsp;OUTD&nbsp;R<sub>[s]</sub> | Outputs R<sub>[s]</sub> and sets I/O to output data mode |
+| INA | `?????` (`00010`) | **R**:&nbsp;INA&nbsp;R<sub>[s]</sub> | Reads from I/O device and stores data in R<sub>[s]</sub> (I/O input address mode) |
+| IND | `?????` (`00011`) | **R**:&nbsp;IND&nbsp;R<sub>[s]</sub> | Reads from I/O device and stores data in R<sub>[s]</sub> (I/O input data mode) |
+| STI | `?????` | **R**:&nbsp;STI | Enables the interrupt flag |
+| CLI | `?????` | **R**:&nbsp;CLI | Disables the interrupt flag |
 
 _* Needs to be revisited after instruction set change_
 
@@ -51,20 +56,20 @@ These instructions transfer data from register to register.
 
 There are also R-Type instructions that specify only one or no operands at all. In those cases the register addresses of the missing operands are simply left empty.
 
-| B<sub>15-11</sub> | B<sub>10-8</sub> | B<sub>7-5</sub> | B<sub>4-0</sub> |
+| B<sub>15-10</sub> | B<sub>9-7</sub> | B<sub>6-4</sub> | B<sub>3-0</sub> |
 |---|---|---|---|---|
-| Opcode | Register s | Register t | Function |
+| Opcode | Register s | Register t | Mode |
 
 ### I-Type Instructions
-I-Type Instructions define 8-bit immediate values to be used for the operation.
+I-Type Instructions define 7-bit immediate values to be used for the operation.
 
-| B<sub>15-11</sub> | B<sub>10-8</sub> | B<sub>7-0</sub> |
+| B<sub>15-10</sub> | B<sub>9-7</sub> | B<sub>6-0</sub> |
 |---|---|---|---|
-| Opcode | Register s | Immediate (8-bit) |
+| Opcode | Register s | Immediate (7-bit) |
 
 ### J-Type Instructions
-These are jump instructions that define 11-bit immediate values.
+These are jump instructions that define 10-bit immediate values.
 
-| B<sub>15-11</sub> | B<sub>10-0</sub>
+| B<sub>15-10</sub> | B<sub>9-0</sub>
 |---|---|
-| Opcode | Immediate (11-bit) |
+| Opcode | Immediate (10-bit) |

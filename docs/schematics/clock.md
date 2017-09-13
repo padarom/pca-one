@@ -15,13 +15,14 @@ It uses 3 555 timer ICs:
 
 _(Click for full size)_
 [![schematics](../_images/clock_module.png)](https://raw.githubusercontent.com/padarom/pca-one/master/docs/_images/clock_module.png ":target=_blank")
+[![board](../_images/clock_module_board.png)](https://raw.githubusercontent.com/padarom/pca-one/master/docs/_images/clock_module_board.png ":target=_blank")
 
 ## Parts
 - 3x **ICM7555** [<i class="fa fa-book"></i>](http://cdn-reichelt.de/documents/datenblatt/A200/ICM7555.pdf)
 - 1x **74LS04** [<i class="fa fa-book"></i>](http://cdn-reichelt.de/documents/datenblatt/A200/LS04_LS05_REN.pdf)
 - 1x **74LS08** [<i class="fa fa-book"></i>](http://cdn-reichelt.de/documents/datenblatt/A200/LS08_REN.pdf)
 - 1x **74LS32** [<i class="fa fa-book"></i>](http://cdn-reichelt.de/documents/datenblatt/A200/LS_32.pdf)
-- 3x 220&#8486; Resistor
+- 4x 220&#8486; Resistor
 - 5x 1k&#8486; Resistor
 - 1x 10k&#8486; Resistor
 - 1x 100k&#8486; Resistor
@@ -29,7 +30,9 @@ _(Click for full size)_
 - 3x 1nF Capacitor
 - 1x 22&micro;F Capacitor
 - 1x 1&micro;F Capacitor
-- 2x 3mm LEDs
+- 3x 3mm LEDs
 - 1x DIP switch _(4 switches are sufficient, I only had 5 switch ones around)_
 - 1x Push Button
 - 1x SPDT slide switch
+- 1x Avalanche diode
+- 1x Quick-burning fuse (5A) + socket
