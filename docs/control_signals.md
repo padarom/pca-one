@@ -14,7 +14,6 @@
 - `J`: Jump (Program Counter Set)
 - `SPs`: Stack Pointer Set
 - `SPe`: Stack Pointer Enable (Output to Bus)
-- `BUS1`: Set 1 on Bus
 - `TMPs`: Temporary ALU Register Set
 - `ACCs`: Accumulator Set
 - `ACCe`: Accumulator Enable (Output to Bus)

@@ -9,6 +9,7 @@
   - [Assembler](assembler.md)
 
 - Implementation Details
+  - [Build Process](build_process.md)
   - Schematics
     - [Clock](schematics/clock.md)
     - [General Purpose Register](schematics/register.md)
