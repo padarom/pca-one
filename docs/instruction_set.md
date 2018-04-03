@@ -31,7 +31,7 @@ The instruction set used by PCA One is inspired by the MIPS-16 instruction set d
 | push | `10110` | **R**:&nbsp;push&nbsp;R<sub>[s]</sub> | Push R<sub>[s]</sub> to the stack top and update stack top |
 | pop | `10111` | **R**:&nbsp;pop&nbsp;R<sub>[s]</sub> | Pop from the stack top and store the value to R<sub>[s]</sub> and update stack top |
 | jal | `11100` | **J**:&nbsp;jal #11 | Calls a subroutine located at [PC + 11 bit signed offset]. Return address is pushed onto stack |
-| ret | `11101` | **R**:&nbsp;rel | Return from a function. Return address is popped from the stack |
+| ret | `11101` | **R**:&nbsp;ret | Return from a function. Return address is popped from the stack |
 | stc | `11110` | **R**:&nbsp;stc | Set the carry flag |
 | hlt | `00000` | **R**:&nbsp;hlt | Halts the processor |
 | rst | `11011` | **R**:&nbsp;rst | Resets the processor |
