@@ -1,3 +1,7 @@
+---
+title: Register Schematics
+---
+
 # General Purpose Registers
 
 The PCA One includes 8 general purpose registers, the last of which is directly connected to a binary to BCD decoder and some 7 segment hexadecimal displays, just for ease of output.

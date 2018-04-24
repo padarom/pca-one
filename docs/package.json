@@ -1,0 +1,12 @@
+{
+  "name": "pca-one",
+  "version": "1.0.0",
+  "description": "Padaroms Computer Architecture",
+  "scripts": {
+    "docs:build": "vuepress build"
+  },
+  "private": true,
+  "dependencies": {
+    "vuepress": "^0.8.4"
+  }
+}
